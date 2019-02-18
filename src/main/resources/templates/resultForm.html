@@ -1,0 +1,19 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Resultat du formulaire d'inscription</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<h1>Recapitulatif</h1>
+<p th:text="'Nom : ' + ${form.last_name}" />
+<p th:text="'Prenom : ' + ${form.first_name}" />
+<p th:text="'Date de naissance : ' + ${form.birthday}" /><br/>
+<p th:text="'Adresse : ' + ${form.adress}" />
+<p th:text="'Ville : ' + ${form.city}" />
+<p th:text="'Code postal : ' + ${form.postcode}" /><br/>
+<p th:text="'Numéro de téléphone : ' + ${form.phone}" />
+<p th:text="'Mail : ' + ${form.email}" />
+<p>Je m'engage à respecter le règlement</p>
+</body>
+</html>
