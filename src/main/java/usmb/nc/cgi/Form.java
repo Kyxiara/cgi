@@ -1,5 +1,7 @@
 package usmb.nc.cgi;
 
+import java.util.HashMap;
+
 public class Form {
     private String last_name;
     private String first_name;
@@ -72,5 +74,18 @@ public class Form {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public HashMap<String, String> getHashMap(){
+        HashMap<String, String> result = new HashMap<String, String>();
+        result.put("last_name" , last_name);
+        result.put("first_name" , first_name);
+        result.put("birthday" , birthday);
+        result.put("adress" , adress);
+        result.put("city" , city);
+        result.put("postcode" , postcode);
+        result.put("phone" , phone);
+        result.put("email" , email);
+        return result;
     }
 }
