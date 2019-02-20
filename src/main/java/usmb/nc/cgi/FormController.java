@@ -20,9 +20,9 @@ public class FormController {
 
     @PostMapping("/form")
     public String formPost(@ModelAttribute Form form) {
-        FormFillingPdf formFillingPdf = new FormFillingPdf("src/main/resources/pdf_templates/formulaire_inscription.pdf");
+        FormFillingPdf formFillingPdf = new FormFillingPdf("src/main/resources/pdf_templates/formulaire_inscription_hockey.pdf");
         try {
-            formFillingPdf.fill(form.getHashMap(), "src/main/resources/pdf_templates/test.pdf", false);
+            formFillingPdf.fill(form.getHashMap(), "src/main/resources/pdf_templates/inscription_realise.pdf", false);
         } catch (IOException e) {
             e.printStackTrace();
         }

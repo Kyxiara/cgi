@@ -1,5 +1,7 @@
 package usmb.nc.cgi;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 
 public class Form {
@@ -11,6 +13,72 @@ public class Form {
     private String postcode;
     private String phone;
     private String email;
+    private String city_birthday;
+    private String no_assurance;
+    private String category;
+    private String position;
+    private String last_name_other;
+    private String first_name_other;
+    private String phone_other;
+
+    //cote : left right
+    //sexe : man woman
+
+    public String getCity_birthday() {
+        return city_birthday;
+    }
+
+    public void setCity_birthday(String city_birthday) {
+        this.city_birthday = city_birthday;
+    }
+
+    public String getNo_assurance() {
+        return no_assurance;
+    }
+
+    public void setNo_assurance(String no_assurance) {
+        this.no_assurance = no_assurance;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    public String getPosition() {
+        return position;
+    }
+
+    public void setPosition(String position) {
+        this.position = position;
+    }
+
+    public String getLast_name_other() {
+        return last_name_other;
+    }
+
+    public void setLast_name_other(String last_name_other) {
+        this.last_name_other = last_name_other;
+    }
+
+    public String getFirst_name_other() {
+        return first_name_other;
+    }
+
+    public void setFirst_name_other(String first_name_other) {
+        this.first_name_other = first_name_other;
+    }
+
+    public String getPhone_other() {
+        return phone_other;
+    }
+
+    public void setPhone_other(String phone_other) {
+        this.phone_other = phone_other;
+    }
 
     public String getLast_name() {
         return last_name;
@@ -86,6 +154,16 @@ public class Form {
         result.put("postcode" , postcode);
         result.put("phone" , phone);
         result.put("email" , email);
+        result.put("city_birthday" , city_birthday);
+        result.put("no_assurance" , no_assurance);
+        result.put("category" , category);
+        result.put("position" , position);
+        result.put("last_name_other" , last_name_other);
+        result.put("first_name_other" , first_name_other);
+        result.put("phone_other" , phone_other);
+
+        SimpleDateFormat formater = new java.text.SimpleDateFormat( "dd/MM/yy" );
+        result.put("todays_date" , formater.format( new Date() ));
         return result;
     }
 }

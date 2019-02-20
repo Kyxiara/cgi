@@ -16,24 +16,37 @@
 </head>
 <body>
 
-<h1>Formulaire d'inscription</h1>
+<h2>HOCKEY SUR GLACE</h2>
+<h2>FORMULAIRE D'INSCRIPTION</h2>
 
 <form action="#" th:action="@{/form}" th:object="${form}" method="post">
-    <h3>Informations du membre</h3>
-    <p>Nom <input type="text" th:field="*{last_name}" /></p>
-    <p>Prenom <input type="text" th:field="*{first_name}"/></p>
-    <p>Date de naissance <input type="date" th:field="*{birthday}"/></p>
+    <fieldset>
+        <legend>Information personelles</legend>
+        Madame <input type="radio" name="sexe" value="madame" />  Monsieur <input type="radio" name="sexe" value="monsieur" />
+        <p>Nom : <input type="text" th:field="*{last_name}" />  Prénom : <input type="text" th:field="*{first_name}"/></p>
+        <p>Né(e) le : <input type="date" th:field="*{birthday}"/>  à : <input type="text" th:field="*{city_birthday}"/></p>
+        <p>Numéro d'assurance maladie : <input type="text" th:field="*{no_assurance}"/></p>
+    </fieldset>
+    <fieldset>
+        <legend>Coordonnées</legend>
+        <p>Adresse : <input type="text" th:field="*{adress}"/></p>
+        <p>Code postal : <input type="text" th:field="*{postcode}"/>  Ville : <input type="text" th:field="*{city}"/></p>
+        <p>Tél. : <input type="tel" th:field="*{phone}"/>  E-Mail : <input type="email" th:field="*{email}"/></p>
+    </fieldset>
+    <fieldset>
+        <legend>Informations secondaires</legend>
+        <p>Catégorie : <input type="text" th:field="*{category}"/></p>
+        <p>Position : <input type="text" th:field="*{position}"/></p>
+        Gauche <input type="radio" name="cote" value="gauche" />  Droite <input type="radio" name="cote" value="droite" />
+    </fieldset>
+    <fieldset>
+        <legend>Personne à contacter en cas d'urgence</legend>
+        <p>Nom : <input type="text" th:field="*{last_name_other}"/>  Prénom : <input type="text" th:field="*{first_name_other}"/></p>
+        <p>Tél. : <input type="tel" th:field="*{phone_other}"/></p>
+    </fieldset>
+    <p><input type="checkbox" id="accept_rules" onclick="checkAcceptRules()"/> J'ai pris connaissance du règlement, et je l'accepte.</p>
     <br />
-    <p>Adresse <input type="text" th:field="*{adress}"/></p>
-    <p>Ville <input type="text" th:field="*{city}"/></p>
-    <p>Code postal <input type="text" th:field="*{postcode}"/></p>
-    <br />
-    <p>Numéro de téléphone <input type="tel" th:field="*{phone}"/></p>
-    <p>Mail <input type="email" th:field="*{email}"/></p>
-    <br />
-    <p><input type="checkbox" id="accept_rules" onclick="checkAcceptRules()"/> Je m'engage à respecter le règlement</p>
-    <br />
-    <input type="submit" value="Valider" id="button" hidden/>
+    <input type="submit" value="Enregistrer" id="button" hidden/>
 </form>
 
 </body>
