@@ -1,13 +1,15 @@
 package usmb.nc.cgi;
 
+import org.springframework.core.io.FileSystemResource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletResponse;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 
 @Controller
 public class FormController {
@@ -27,5 +29,21 @@ public class FormController {
             e.printStackTrace();
         }
         return "resultForm";
+    }
+
+    @RequestMapping(value = "/pdf/{file_name}", method = RequestMethod.GET)
+    public void getFile(
+            @PathVariable("file_name") String fileName,
+            HttpServletResponse response) {
+        try {
+            InputStream is = new FileInputStream("src/main/resources/pdf_templates/" + fileName);
+            // copy it to response's OutputStream
+            org.apache.commons.io.IOUtils.copy(is, response.getOutputStream());
+            response.flushBuffer();
+        } catch (IOException ex) {
+            System.err.println("Error writing file to output stream. Filename was " + fileName);
+            throw new RuntimeException("IOError writing file to output stream");
+        }
+
     }
 }
