@@ -14,6 +14,8 @@ import java.io.InputStream;
 @Controller
 public class FormController {
 
+    private String pdf_template_path = "src/main/resources/pdf_templates/";
+
     @GetMapping("/form")
     public String creationForm(Model model) {
         model.addAttribute("form", new Form());
@@ -22,9 +24,9 @@ public class FormController {
 
     @PostMapping("/form")
     public String formPost(@ModelAttribute Form form) {
-        FormFillingPdf formFillingPdf = new FormFillingPdf("src/main/resources/pdf_templates/formulaire_inscription_hockey.pdf");
+        FormFillingPdf formFillingPdf = new FormFillingPdf(pdf_template_path + "formulaire_inscription_hockey.pdf");
         try {
-            formFillingPdf.fill(form.getHashMap(), "src/main/resources/pdf_templates/inscription_realise.pdf", false);
+            formFillingPdf.fill(form.getHashMap(), pdf_template_path + form.getPdfName(), false);
         } catch (IOException e) {
             e.printStackTrace();
         }
