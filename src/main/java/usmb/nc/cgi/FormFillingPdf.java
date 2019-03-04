@@ -4,6 +4,7 @@ import com.itextpdf.text.pdf.AcroFields;
 import com.itextpdf.text.pdf.PdfReader;
 import com.itextpdf.text.pdf.PdfStamper;
 
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.HashMap;
@@ -18,7 +19,7 @@ public class FormFillingPdf {
     }
 
     public void fill(HashMap<String, String> values, String dest, boolean isDefinitive) throws IOException {
-        PdfReader reader = new PdfReader(template);
+        PdfReader reader = new PdfReader(new FileInputStream(template));
         PdfStamper stamper = null;
         try {
             stamper = new PdfStamper(reader, new FileOutputStream(dest));
