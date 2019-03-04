@@ -3,8 +3,15 @@ package usmb.nc.cgi;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
+import javax.persistence.*;
 
+@Entity
 public class Form {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long id;
+
     private String last_name;
     private String first_name;
     private String birthday;
@@ -158,6 +165,8 @@ public class Form {
     public void setEmail(String email) {
         this.email = email;
     }
+
+    public Form(){}
 
     public HashMap<String, String> getHashMap(){
         HashMap<String, String> result = new HashMap<String, String>();
