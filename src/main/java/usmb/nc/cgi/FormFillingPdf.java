@@ -33,7 +33,7 @@ public class FormFillingPdf {
             if(myFields.get(field) != null){
                 try {
                     fields.setField(field, values.get(field));
-                } catch (DocumentException e) {
+                } catch (DocumentException | NullPointerException e) {
                     e.printStackTrace();
                 }
                 System.out.println("added : " + values.get(field) + " for " + field);

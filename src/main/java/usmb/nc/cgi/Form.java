@@ -20,8 +20,8 @@ public class Form {
     private String last_name_other;
     private String first_name_other;
     private String phone_other;
-    private String cote;
-    private String sexe;
+    private String cote = "left";
+    private String sexe = "woman";
 
     public String getCote() {
         return cote;
