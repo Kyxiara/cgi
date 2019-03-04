@@ -32,7 +32,7 @@ public class FormController {
         formRepository.save(form);
         FormFillingPdf formFillingPdf = new FormFillingPdf(pdf_template_path + "formulaire_inscription_hockey.pdf");
         try {
-            formFillingPdf.fill(form.getHashMap(), pdf_template_path + form.getPdfName(), false);
+            formFillingPdf.fill(form.getHashMap(), pdf_template_path + form.getPathPdf(), false);
         } catch (IOException e) {
             e.printStackTrace();
         }

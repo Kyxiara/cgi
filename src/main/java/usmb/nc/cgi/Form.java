@@ -29,6 +29,7 @@ public class Form {
     private String phone_other;
     private String cote = "left";
     private String sexe = "woman";
+    private String pathPdf;
 
     public String getCote() {
         return cote;
@@ -166,8 +167,12 @@ public class Form {
         this.email = email;
     }
 
-    public String getPdfName() {
-        return id + ".pdf";
+    public String getPathPdf() {
+        return "/pdf/" + id + ".pdf";
+    }
+
+    public void setPathPdf(String pathPdf) {
+        this.pathPdf = pathPdf;
     }
 
     public Form(){}

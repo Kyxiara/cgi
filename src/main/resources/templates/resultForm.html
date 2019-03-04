@@ -16,6 +16,6 @@
 <p th:text="'Mail : ' + ${form.email}" />
 <p>Je m'engage à respecter le règlement</p>
 
-<a href="/pdf/inscription_realise.pdf" target="_blank" >telecharger</a>
+<a th:href="${form.pathPdf}" target="_blank" >telecharger</a>
 </body>
 </html>
