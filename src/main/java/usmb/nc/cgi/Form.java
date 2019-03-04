@@ -20,9 +20,24 @@ public class Form {
     private String last_name_other;
     private String first_name_other;
     private String phone_other;
+    private String cote;
+    private String sexe;
 
-    //cote : left right
-    //sexe : man woman
+    public String getCote() {
+        return cote;
+    }
+
+    public void setCote(String cote) {
+        this.cote = cote;
+    }
+
+    public String getSexe() {
+        return sexe;
+    }
+
+    public void setSexe(String sexe) {
+        this.sexe = sexe;
+    }
 
     public String getCity_birthday() {
         return city_birthday;
@@ -161,6 +176,8 @@ public class Form {
         result.put("last_name_other" , last_name_other);
         result.put("first_name_other" , first_name_other);
         result.put("phone_other" , phone_other);
+        result.put("cote", cote);
+        result.put("sexe", sexe);
 
         SimpleDateFormat formater = new java.text.SimpleDateFormat( "dd/MM/yy" );
         result.put("todays_date" , formater.format( new Date() ));

@@ -22,7 +22,7 @@
 <form action="#" th:action="@{/form}" th:object="${form}" method="post">
     <fieldset>
         <legend>Information personelles</legend>
-        Madame <input type="radio" name="sexe" value="madame" />  Monsieur <input type="radio" name="sexe" value="monsieur" />
+        Madame <input type="radio" th:field="*{sexe}" value="woman" />  Monsieur <input type="radio" th:field="*{sexe}" value="man" />
         <p>Nom : <input type="text" th:field="*{last_name}" />  Prénom : <input type="text" th:field="*{first_name}"/></p>
         <p>Né(e) le : <input type="date" th:field="*{birthday}"/>  à : <input type="text" th:field="*{city_birthday}"/></p>
         <p>Numéro d'assurance maladie : <input type="text" th:field="*{no_assurance}"/></p>
@@ -37,7 +37,7 @@
         <legend>Informations secondaires</legend>
         <p>Catégorie : <input type="text" th:field="*{category}"/></p>
         <p>Position : <input type="text" th:field="*{position}"/></p>
-        Gauche <input type="radio" name="cote" value="gauche" />  Droite <input type="radio" name="cote" value="droite" />
+        Gauche <input type="radio" th:field="*{cote}" value="left" />  Droite <input type="radio" th:field="*{cote}" value="right" />
     </fieldset>
     <fieldset>
         <legend>Personne à contacter en cas d'urgence</legend>
