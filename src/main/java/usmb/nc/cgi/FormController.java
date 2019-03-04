@@ -16,6 +16,8 @@ import java.util.ArrayList;
 @Controller
 public class FormController {
 
+    private String pdf_template_path = "src/main/resources/pdf_templates/";
+
     @Autowired
     private FormRepository formRepository;
 
@@ -28,9 +30,9 @@ public class FormController {
     @PostMapping("/form")
     public String formPost(@ModelAttribute Form form) {
         formRepository.save(form);
-        FormFillingPdf formFillingPdf = new FormFillingPdf("src/main/resources/pdf_templates/formulaire_inscription_hockey.pdf");
+        FormFillingPdf formFillingPdf = new FormFillingPdf(pdf_template_path + "formulaire_inscription_hockey.pdf");
         try {
-            formFillingPdf.fill(form.getHashMap(), "src/main/resources/pdf_templates/inscription_realise.pdf", false);
+            formFillingPdf.fill(form.getHashMap(), pdf_template_path + form.getPdfName(), false);
         } catch (IOException e) {
             e.printStackTrace();
         }

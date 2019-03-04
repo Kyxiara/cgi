@@ -166,6 +166,10 @@ public class Form {
         this.email = email;
     }
 
+    public String getPdfName() {
+        return id + ".pdf";
+    }
+
     public Form(){}
 
     public HashMap<String, String> getHashMap(){

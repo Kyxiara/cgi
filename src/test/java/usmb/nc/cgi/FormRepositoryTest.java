@@ -38,9 +38,17 @@ public class FormRepositoryTest {
     @Test
     public void whenSavingForm_thenCorrect() {
         Form f = new Form();
-        f.setFirst_name("Toto");
+        String firstNameTest = "Toto";
+        f.setFirst_name(firstNameTest);
         formRepository.save(f);
         ArrayList<Form> res = (ArrayList<Form>)formRepository.findAll();
-        assert(res.get(res.size()-1).getFirst_name()).equals("Toto");
+
+        boolean found = false;
+        for(Form aForm : res){
+            String firstName = aForm.getFirst_name();
+            if(firstName != null && firstName.equals(firstNameTest))
+                found = true;
+        }
+        assert found;
     }
 }
