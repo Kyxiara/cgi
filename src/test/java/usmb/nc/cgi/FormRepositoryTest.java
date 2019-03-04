@@ -26,19 +26,21 @@ public class FormRepositoryTest {
 
     @Test
     public void whenFindingAllForms_thenCorrect() {
+        int nb_forms = ((ArrayList<Form>)formRepository.findAll()).size();
         Form f1 = new Form();
         Form f2 = new Form();
         formRepository.save(f1);
         formRepository.save(f2);
         ArrayList<Form> res = (ArrayList<Form>)formRepository.findAll();
-        assert res.size() == 2;
+        assert res.size() == 2 + nb_forms;
     }
 
-//    @Test
-//    public void whenSavingForm_thenCorrect() {
-//        customerRepository.save(new Customer("Bob", "bob@domain.com"));
-//        Customer customer = customerRepository.findById(1L).orElseGet(()
-//                -> new Customer("john", "john@domain.com"));
-//        assertThat(customer.getName()).isEqualTo("Bob");
-//    }
+    @Test
+    public void whenSavingForm_thenCorrect() {
+        Form f = new Form();
+        f.setFirst_name("Toto");
+        formRepository.save(f);
+        ArrayList<Form> res = (ArrayList<Form>)formRepository.findAll();
+        assert(res.get(res.size()-1).getFirst_name()).equals("Toto");
+    }
 }
