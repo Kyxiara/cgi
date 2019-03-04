@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Liste des formulaires</title>
+</head>
+<body>
+<tr th:each="form : ${forms}">
+    <td><a href="${form.getPdfName()}"><span th:text="${form.first_name}"> Prenom </span></a></td>
+    <br/>
+</tr>
+</body>
+</html>
