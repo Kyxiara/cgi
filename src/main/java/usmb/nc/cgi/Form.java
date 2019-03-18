@@ -178,9 +178,7 @@ public class Form {
     }
 
     public static Long findIdByFilename(String fileName){
-        long id = Integer.parseInt(fileName.substring(4, fileName.length()-4));
-        Optional<Long> optionalLong = Optional.of(id);
-        return optionalLong.get();
+        return Long.parseLong(fileName.substring(4, fileName.length()-4));
     }
 
     public Form(){}

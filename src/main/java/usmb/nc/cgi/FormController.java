@@ -1,14 +1,17 @@
 package usmb.nc.cgi;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Optional;
 
 @Controller
 public class FormController {
@@ -36,7 +39,11 @@ public class FormController {
    @RequestMapping(value="/pdf/{file_name}", method=RequestMethod.GET)
     public void getFile(@PathVariable("file_name") String fileName, HttpServletResponse response) {
         try {
-            Form form = (Form) formRepository.findById(Form.findIdByFilename(fileName)).get();
+            Optional<Form> optionalForm = formRepository.findById(Form.findIdByFilename(fileName));
+            if(optionalForm.isEmpty())
+                throw new ResponseStatusException(HttpStatus.NOT_FOUND, "form not found");
+
+            Form form = optionalForm.get();
             System.out.println("downloading : " + pdf_filled_path + fileName);
             FormFillingPdf formFillingPdf = new FormFillingPdf(pdf_template_path + default_form);
             formFillingPdf.fill(form.getHashMap(), response.getOutputStream(), false);
