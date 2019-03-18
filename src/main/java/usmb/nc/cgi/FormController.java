@@ -65,4 +65,9 @@ public class FormController {
         model.addAttribute("forms", (ArrayList<Form>) formRepository.findAll());
         return "listForms";
     }
+
+    @GetMapping("/signIn")
+    public String signIn() {
+        return "signIn";
+    }
 }
