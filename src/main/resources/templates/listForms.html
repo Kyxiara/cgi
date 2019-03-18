@@ -6,7 +6,7 @@
 </head>
 <body>
 <tr th:each="form : ${forms}">
-    <td><a th:href="${form.pathPdf}"><span th:text="${form.first_name}"> Prenom </span></a></td>
+    <td><a th:href="${'pdf/' + form.fileName}"><span th:text="${form.first_name}"> Prenom </span></a></td>
     <br/>
 </tr>
 </body>

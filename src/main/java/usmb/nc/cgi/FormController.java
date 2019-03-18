@@ -1,11 +1,9 @@
 package usmb.nc.cgi;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.FileSystemResource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.FileInputStream;
@@ -17,6 +15,7 @@ import java.util.ArrayList;
 public class FormController {
 
     private String pdf_template_path = "src/main/resources/pdf_templates/";
+    private String pdf_filled_path = "src/main/resources/pdf_filled/";
 
     @Autowired
     private FormRepository formRepository;
@@ -32,7 +31,7 @@ public class FormController {
         formRepository.save(form);
         FormFillingPdf formFillingPdf = new FormFillingPdf(pdf_template_path + "formulaire_inscription_hockey.pdf");
         try {
-            formFillingPdf.fill(form.getHashMap(), pdf_template_path + form.getPathPdf(), false);
+            formFillingPdf.fill(form.getHashMap(), pdf_filled_path + form.getFileName(), false);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -44,7 +43,8 @@ public class FormController {
             @PathVariable("file_name") String fileName,
             HttpServletResponse response) {
         try {
-            InputStream is = new FileInputStream("src/main/resources/pdf_templates/" + fileName);
+            System.out.println("downloading : " + pdf_filled_path + fileName);
+            InputStream is = new FileInputStream(pdf_filled_path + fileName);
             // copy it to response's OutputStream
             org.apache.commons.io.IOUtils.copy(is, response.getOutputStream());
             response.flushBuffer();
