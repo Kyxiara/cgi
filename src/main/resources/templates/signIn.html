@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Connexion</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 <body>
     <h4>Connectez vous !</h4>
@@ -12,10 +13,11 @@
     </form>
     <br/>
     <h4>Enregistrez vous !</h4>
-    <form action="#" method="post">
-        <p>Login (email) : <input type="text"/></p>
-        <p>Nouveau mot de passe : <input type="password"/></p>
+    <form action="#" method="post" th:action="@{/auth/signin}" th:object="${authenticationRequest}">
+        <p>Login (email) : <input type="email" th:field="*{username}"/></p>
+        <p>Nouveau mot de passe : <input type="password" th:field="*{password}"/></p>
         <p>Confirmation du mot de passe : <input type="password"/></p>
+        <input type="submit" value="Enregistrer"/>
     </form>
 
     <a href="index.html" >Retour</a>

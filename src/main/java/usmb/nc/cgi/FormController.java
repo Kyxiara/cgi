@@ -68,7 +68,8 @@ public class FormController {
     }
 
     @GetMapping("/signIn")
-    public String signIn() {
+    public String signIn(Model model) {
+        model.addAttribute("authenticationRequest", new AuthenticationRequest());
         return "signIn";
     }
 }
