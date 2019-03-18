@@ -4,9 +4,7 @@ import com.itextpdf.text.pdf.AcroFields;
 import com.itextpdf.text.pdf.PdfReader;
 import com.itextpdf.text.pdf.PdfStamper;
 
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import java.io.*;
 import java.util.HashMap;
 
 public class FormFillingPdf {
@@ -18,11 +16,11 @@ public class FormFillingPdf {
         this.template = template;
     }
 
-    public void fill(HashMap<String, String> values, String dest, boolean isDefinitive) throws IOException {
+    public void fill(HashMap<String, String> values, OutputStream dest, boolean isDefinitive) throws IOException {
         PdfReader reader = new PdfReader(new FileInputStream(template));
         PdfStamper stamper = null;
         try {
-            stamper = new PdfStamper(reader, new FileOutputStream(dest));
+            stamper = new PdfStamper(reader, dest);
         } catch (DocumentException e) {
             e.printStackTrace();
             throw new IOException("can't create a pdfStamper from the template and given output path");
