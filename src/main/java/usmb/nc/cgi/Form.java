@@ -3,6 +3,8 @@ package usmb.nc.cgi;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Optional;
+import java.util.function.Function;
 import javax.persistence.*;
 
 @Entity
@@ -175,6 +177,11 @@ public class Form {
         System.err.println("opération interdite");
     }
 
+    public static Long findIdByFilename(String fileName){
+        long id = Integer.parseInt(fileName.substring(4, fileName.length()-4));
+        Optional<Long> optionalLong = Optional.of(id);
+        return optionalLong.get();
+    }
 
     public Form(){}
 

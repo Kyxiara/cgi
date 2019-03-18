@@ -36,9 +36,10 @@ public class FormController {
    @RequestMapping(value="/pdf/{file_name}", method=RequestMethod.GET)
     public void getFile(@PathVariable("file_name") String fileName, HttpServletResponse response) {
         try {
+            Form form = (Form) formRepository.findById(Form.findIdByFilename(fileName)).get();
             System.out.println("downloading : " + pdf_filled_path + fileName);
             FormFillingPdf formFillingPdf = new FormFillingPdf(pdf_template_path + default_form);
-            formFillingPdf.fill(new HashMap<>(), response.getOutputStream(), false);
+            formFillingPdf.fill(form.getHashMap(), response.getOutputStream(), false);
 
             // Set the content type and attachment header.
             response.addHeader("Content-disposition", "attachment;filename=" + fileName);
