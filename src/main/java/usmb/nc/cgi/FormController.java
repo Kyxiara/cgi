@@ -39,9 +39,10 @@ public class FormController {
    @RequestMapping(value="/pdf/{file_name}", method=RequestMethod.GET)
     public void getFile(@PathVariable("file_name") String fileName, HttpServletResponse response) {
         try {
-            Optional<Form> optionalForm = formRepository.findById(Form.findIdByFilename(fileName));
+            Long id = Form.findIdByFilename(fileName);
+            Optional<Form> optionalForm = formRepository.findById(id);
             if(optionalForm.isEmpty())
-                throw new ResponseStatusException(HttpStatus.NOT_FOUND, "form not found");
+                throw new FormNotFoundException(id);
 
             Form form = optionalForm.get();
             System.out.println("downloading : " + pdf_filled_path + fileName);
