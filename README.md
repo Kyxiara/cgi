@@ -1,0 +1,1 @@
+jwt security from : https://github.com/szerhusenBC/jwt-spring-security-demo

@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
+import usmb.nc.cgi.security.JwtAuthenticationRequest;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
@@ -69,7 +70,7 @@ public class FormController {
 
     @GetMapping("/signIn")
     public String signIn(Model model) {
-        model.addAttribute("authenticationRequest", new AuthenticationRequest());
+        model.addAttribute("authenticationRequest", new JwtAuthenticationRequest());
         return "signIn";
     }
 }

@@ -13,7 +13,7 @@
     </form>
     <br/>
     <h4>Enregistrez vous !</h4>
-    <form action="#" method="post" th:action="@{/auth/signin}" th:object="${authenticationRequest}">
+    <form action="#" method="post" th:action="@{/auth/signup}" th:object="${authenticationRequest}">
         <p>Login (email) : <input type="email" th:field="*{username}"/></p>
         <p>Nouveau mot de passe : <input type="password" th:field="*{password}"/></p>
         <p>Confirmation du mot de passe : <input type="password"/></p>
@@ -21,5 +21,7 @@
     </form>
 
     <a href="index.html" >Retour</a>
+    <script src="../static/js/libs/jwt-decode.min.js"></script>
+    <script src="../static/js/client.js"></script>
 </body>
 </html>
