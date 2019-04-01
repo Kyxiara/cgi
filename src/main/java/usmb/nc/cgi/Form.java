@@ -1,11 +1,12 @@
 package usmb.nc.cgi;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.Optional;
-import java.util.function.Function;
-import javax.persistence.*;
 
 @Entity
 public class Form {

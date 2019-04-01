@@ -1,6 +1,7 @@
 package usmb.nc.cgi;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -8,17 +9,20 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 import javax.servlet.http.HttpServletResponse;
-import java.io.*;
-import java.util.ArrayList;
-import java.util.HashMap;
+import java.io.IOException;
 import java.util.Optional;
 
 @Controller
 public class FormController {
 
-    private String pdf_template_path = "src/main/resources/pdf_templates/";
-    private String pdf_filled_path = "src/main/resources/pdf_filled/";
-    private String default_form = "formulaire_inscription_hockey.pdf";
+    @Value("${pdf.template_path}")
+    private String pdf_template_path;
+
+    @Value("${pdf.filled_path}")
+    private String pdf_filled_path;
+
+    @Value("${pdf.default_form}")
+    private String default_form;
 
 
     @Autowired
@@ -62,7 +66,7 @@ public class FormController {
 
     @GetMapping("/listforms")
     public String listForms(Model model) {
-        model.addAttribute("forms", (ArrayList<Form>) formRepository.findAll());
+        model.addAttribute("forms", formRepository.findAll());
         return "listForms";
     }
 }

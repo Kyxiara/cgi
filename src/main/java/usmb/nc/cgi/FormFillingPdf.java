@@ -17,6 +17,7 @@ public class FormFillingPdf {
     }
 
     public void fill(HashMap<String, String> values, OutputStream dest, boolean isDefinitive) throws IOException {
+        // init template and output
         PdfReader reader = new PdfReader(new FileInputStream(template));
         PdfStamper stamper = null;
         try {
@@ -25,6 +26,8 @@ public class FormFillingPdf {
             e.printStackTrace();
             throw new IOException("can't create a pdfStamper from the template and given output path");
         }
+
+        // fill the fields with the given values
         AcroFields fields = stamper.getAcroFields();
         HashMap<String, AcroFields.Item> myFields = (HashMap<String, AcroFields.Item>) fields.getFields();
         for (String field : values.keySet()) {
@@ -34,11 +37,12 @@ public class FormFillingPdf {
                 } catch (DocumentException | NullPointerException e) {
                     e.printStackTrace();
                 }
-                System.out.println("added : " + values.get(field) + " for " + field);
             } else {
                 System.err.println("invalid field !!");
             }
         }
+
+        // close streams
         if(isDefinitive)
             System.err.println("isDefinitive is not a supported feature at this time");
         stamper.setFormFlattening(isDefinitive);
