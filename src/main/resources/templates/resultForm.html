@@ -22,7 +22,7 @@
     <p th:text="'Tél. : ' + ${form.phone}" />
     <p th:text="'E-Mail : ' + ${form.email}" />
 </fieldset>
-<fieldset>
+<fieldset th:hidden="${form.pdfTemplate} == 'formulaire_inscription_aqua_poney.pdf'" >
     <legend>Informations secondaires</legend>
     <p th:text="'Catégorie : ' + ${form.category}" />
     <p th:text="'Position :  ' + ${form.position}" />
