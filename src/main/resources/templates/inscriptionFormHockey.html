@@ -23,15 +23,15 @@
     <fieldset>
         <legend>Information personelles</legend>
         Madame <input type="radio" th:field="*{sexe}" value="woman" />  Monsieur <input type="radio" th:field="*{sexe}" value="man" />
-        <p>Nom : <input type="text" th:field="*{last_name}" required/>  Prénom : <input type="text" th:field="*{first_name}" required/></p>
-        <p>Né(e) le : <input type="date" th:field="*{birthday}" required/>  à : <input type="text" th:field="*{city_birthday}"/></p>
-        <p>Numéro d'assurance maladie : <input type="text" th:field="*{no_assurance}" required/></p>
+        <p>*Nom : <input type="text" th:field="*{last_name}" required/>  *Prénom : <input type="text" th:field="*{first_name}" required/></p>
+        <p>*Né(e) le : <input type="date" th:field="*{birthday}" required/>  à : <input type="text" th:field="*{city_birthday}"/></p>
+        <p>*Numéro d'assurance maladie : <input type="text" th:field="*{no_assurance}" required/></p>
     </fieldset>
     <fieldset>
         <legend>Coordonnées</legend>
-        <p>Adresse : <input type="text" th:field="*{adress}" required/></p>
-        <p>Code postal : <input type="text" th:field="*{postcode}" required/>  Ville : <input type="text" th:field="*{city}" required/></p>
-        <p>Tél. : <input type="tel" th:field="*{phone}"/>  E-Mail : <input type="email" th:field="*{email}" required/></p>
+        <p>*Adresse : <input type="text" th:field="*{adress}" required/></p>
+        <p>*Code postal : <input type="text" th:field="*{postcode}" required/>  *Ville : <input type="text" th:field="*{city}" required/></p>
+        <p>Tél. : <input type="tel" th:field="*{phone}"/>  *E-Mail : <input type="email" th:field="*{email}" required/></p>
     </fieldset>
     <fieldset>
         <legend>Informations secondaires</legend>
@@ -45,8 +45,11 @@
         <p>Tél. : <input type="tel" th:field="*{phone_other}"/></p>
     </fieldset>
     <p><input type="checkbox" id="accept_rules" onclick="checkAcceptRules()" required/>J'ai pris connaissance du règlement, et je m'engage à le respecter.</p>
+    * Champs obligatoires
     <br />
     <input type="submit" value="Enregistrer" id="button" hidden/>
+    <br/>
+    <a href="index.html" >Retour</a>
 </form>
 
 </body>
