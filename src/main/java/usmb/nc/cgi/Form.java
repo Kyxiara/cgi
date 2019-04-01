@@ -33,6 +33,7 @@ public class Form {
     private String cote = "left";
     private String sexe = "woman";
     private String fileName;
+    private String pdfTemplate;
 
     public String getCote() {
         return cote;
@@ -207,5 +208,13 @@ public class Form {
         SimpleDateFormat formater = new java.text.SimpleDateFormat( "dd/MM/yy" );
         result.put("todays_date" , formater.format( new Date() ));
         return result;
+    }
+
+    public String getPdfTemplate() {
+        return pdfTemplate;
+    }
+
+    public void setPdfTemplate(String pdfTemplate) {
+        this.pdfTemplate = pdfTemplate;
     }
 }

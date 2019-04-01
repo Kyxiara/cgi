@@ -30,7 +30,9 @@ public class FormController {
 
     @GetMapping("/form")
     public String creationForm(Model model) {
-        model.addAttribute("form", new Form());
+        Form form = new Form();
+        form.setPdfTemplate(default_form);
+        model.addAttribute("form", form);
         return "inscriptionForm";
     }
 
@@ -49,7 +51,10 @@ public class FormController {
 
             Form form = optionalForm.get();
             System.out.println("downloading : " + pdf_filled_path + fileName);
-            FormFillingPdf formFillingPdf = new FormFillingPdf(pdf_template_path + default_form);
+            String pdfTemplate = form.getPdfTemplate();
+            if(pdfTemplate == null)
+                pdfTemplate = default_form;
+            FormFillingPdf formFillingPdf = new FormFillingPdf(pdf_template_path + pdfTemplate);
             formFillingPdf.fill(form.getHashMap(), response.getOutputStream(), false);
 
             // Set the content type and attachment header.
