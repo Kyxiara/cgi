@@ -21,23 +21,40 @@ public class FormController {
     @Value("${pdf.filled_path}")
     private String pdf_filled_path;
 
-    @Value("${pdf.default_form}")
-    private String default_form;
+    @Value("${pdf.form_hockey}")
+    private String form_hockey;
+
+    @Value("${pdf.form_aqua_poney}")
+    private String form_aqua_poney;
 
 
     @Autowired
     private FormRepository formRepository;
 
-    @GetMapping("/form")
-    public String creationForm(Model model) {
+    @GetMapping("/formHockey")
+    public String creationFormHockey(Model model) {
         Form form = new Form();
-        form.setPdfTemplate(default_form);
         model.addAttribute("form", form);
-        return "inscriptionForm";
+        return "inscriptionFormHockey";
     }
 
-    @PostMapping("/form")
-    public String formPost(@ModelAttribute Form form) {
+    @PostMapping("/formHockey")
+    public String formPostHockey(@ModelAttribute Form form) {
+        form.setPdfTemplate(form_hockey);
+        formRepository.save(form);
+        return "resultForm";
+    }
+
+    @GetMapping("/formAquaPoney")
+    public String creationFormAquaPoney(Model model) {
+        Form form = new Form();
+        model.addAttribute("form", form);
+        return "inscriptionFormAquaPoney";
+    }
+
+    @PostMapping("/formAquaPoney")
+    public String formPostAquaPoney(@ModelAttribute Form form) {
+        form.setPdfTemplate(form_aqua_poney);
         formRepository.save(form);
         return "resultForm";
     }
@@ -52,8 +69,10 @@ public class FormController {
             Form form = optionalForm.get();
             System.out.println("downloading : " + pdf_filled_path + fileName);
             String pdfTemplate = form.getPdfTemplate();
-            if(pdfTemplate == null)
-                pdfTemplate = default_form;
+            if(pdfTemplate == null){
+                pdfTemplate = form_hockey;
+                System.out.println("null");
+            }
             FormFillingPdf formFillingPdf = new FormFillingPdf(pdf_template_path + pdfTemplate);
             formFillingPdf.fill(form.getHashMap(), response.getOutputStream(), false);
 

@@ -171,6 +171,14 @@ public class Form {
         this.email = email;
     }
 
+    public String getPdfTemplate() {
+        return pdfTemplate;
+    }
+
+    public void setPdfTemplate(String pdfTemplate) {
+        this.pdfTemplate = pdfTemplate;
+    }
+
     public String getFileName() {
         return "form" + id + ".pdf";
     }
@@ -210,11 +218,5 @@ public class Form {
         return result;
     }
 
-    public String getPdfTemplate() {
-        return pdfTemplate;
-    }
 
-    public void setPdfTemplate(String pdfTemplate) {
-        this.pdfTemplate = pdfTemplate;
-    }
 }

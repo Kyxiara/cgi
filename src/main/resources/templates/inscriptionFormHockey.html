@@ -1,0 +1,53 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Formulaire d'inscription</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+        function checkAcceptRules() {
+            if (document.getElementById("accept_rules").checked){
+                $("#button").show();
+            } else {
+                $("#button").hide();
+            }
+        }
+    </script>
+</head>
+<body>
+
+<h2>HOCKEY SUR GLACE</h2>
+<h2>FORMULAIRE D'INSCRIPTION</h2>
+
+<form action="#" th:action="@{/formHockey}" th:object="${form}" method="post">
+    <fieldset>
+        <legend>Information personelles</legend>
+        Madame <input type="radio" th:field="*{sexe}" value="woman" />  Monsieur <input type="radio" th:field="*{sexe}" value="man" />
+        <p>Nom : <input type="text" th:field="*{last_name}" required/>  Prénom : <input type="text" th:field="*{first_name}" required/></p>
+        <p>Né(e) le : <input type="date" th:field="*{birthday}" required/>  à : <input type="text" th:field="*{city_birthday}"/></p>
+        <p>Numéro d'assurance maladie : <input type="text" th:field="*{no_assurance}" required/></p>
+    </fieldset>
+    <fieldset>
+        <legend>Coordonnées</legend>
+        <p>Adresse : <input type="text" th:field="*{adress}" required/></p>
+        <p>Code postal : <input type="text" th:field="*{postcode}" required/>  Ville : <input type="text" th:field="*{city}" required/></p>
+        <p>Tél. : <input type="tel" th:field="*{phone}"/>  E-Mail : <input type="email" th:field="*{email}" required/></p>
+    </fieldset>
+    <fieldset>
+        <legend>Informations secondaires</legend>
+        <p>Catégorie : <input type="text" th:field="*{category}"/></p>
+        <p>Position : <input type="text" th:field="*{position}"/></p>
+        Gauche <input type="radio" th:field="*{cote}" value="left" />  Droite <input type="radio" th:field="*{cote}" value="right" />
+    </fieldset>
+    <fieldset>
+        <legend>Personne à contacter en cas d'urgence</legend>
+        <p>Nom : <input type="text" th:field="*{last_name_other}"/>  Prénom : <input type="text" th:field="*{first_name_other}"/></p>
+        <p>Tél. : <input type="tel" th:field="*{phone_other}"/></p>
+    </fieldset>
+    <p><input type="checkbox" id="accept_rules" onclick="checkAcceptRules()" required/>J'ai pris connaissance du règlement, et je m'engage à le respecter.</p>
+    <br />
+    <input type="submit" value="Enregistrer" id="button" hidden/>
+</form>
+
+</body>
+</html>

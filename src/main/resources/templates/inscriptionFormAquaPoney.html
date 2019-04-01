@@ -16,10 +16,10 @@
 </head>
 <body>
 
-<h2>HOCKEY SUR GLACE</h2>
+<h2>AQUA PONEY</h2>
 <h2>FORMULAIRE D'INSCRIPTION</h2>
 
-<form action="#" th:action="@{/form}" th:object="${form}" method="post">
+<form action="#" th:action="@{/formAquaPoney}" th:object="${form}" method="post">
     <fieldset>
         <legend>Information personelles</legend>
         Madame <input type="radio" th:field="*{sexe}" value="woman" />  Monsieur <input type="radio" th:field="*{sexe}" value="man" />
@@ -32,12 +32,6 @@
         <p>Adresse : <input type="text" th:field="*{adress}" required/></p>
         <p>Code postal : <input type="text" th:field="*{postcode}" required/>  Ville : <input type="text" th:field="*{city}" required/></p>
         <p>Tél. : <input type="tel" th:field="*{phone}"/>  E-Mail : <input type="email" th:field="*{email}" required/></p>
-    </fieldset>
-    <fieldset>
-        <legend>Informations secondaires</legend>
-        <p>Catégorie : <input type="text" th:field="*{category}"/></p>
-        <p>Position : <input type="text" th:field="*{position}"/></p>
-        Gauche <input type="radio" th:field="*{cote}" value="left" />  Droite <input type="radio" th:field="*{cote}" value="right" />
     </fieldset>
     <fieldset>
         <legend>Personne à contacter en cas d'urgence</legend>
