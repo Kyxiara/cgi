@@ -6,15 +6,36 @@
 </head>
 <body>
 <h1>Recapitulatif</h1>
-<p th:text="'Nom : ' + ${form.last_name}" />
-<p th:text="'Prenom : ' + ${form.first_name}" />
-<p th:text="'Date de naissance : ' + ${form.birthday}" /><br/>
-<p th:text="'Adresse : ' + ${form.adress}" />
-<p th:text="'Ville : ' + ${form.city}" />
-<p th:text="'Code postal : ' + ${form.postcode}" /><br/>
-<p th:text="'Numéro de téléphone : ' + ${form.phone}" />
-<p th:text="'Mail : ' + ${form.email}" />
-<p>Je m'engage à respecter le règlement</p>
+<fieldset>
+    <legend>Information personelles</legend>
+    Madame <input type="checkbox" th:checked="${form.sexe} == 'woman'" disabled/> Monsieur <input type="checkbox" th:checked="${form.sexe} == 'man'" disabled/>
+    <p th:text="'Nom : ' + ${form.last_name}" />
+    <p th:text="'Prénom : ' + ${form.first_name}" />
+    <p th:text="'Né(e) le : ' + ${form.birthday} + ' à : ' + ${form.city_birthday}" />
+    <p th:text="'Numéro d\'assurance maladie : ' + ${form.no_assurance}" />
+</fieldset>
+<fieldset>
+    <legend>Coordonnées</legend>
+    <p th:text="'Adresse : ' + ${form.adress}" />
+    <p th:text="'Code postal : ' + ${form.postcode}" />
+    <p th:text="'Ville : ' + ${form.city}" />
+    <p th:text="'Tél. : ' + ${form.phone}" />
+    <p th:text="'E-Mail : ' + ${form.email}" />
+</fieldset>
+<fieldset>
+    <legend>Informations secondaires</legend>
+    <p th:text="'Catégorie : ' + ${form.category}" />
+    <p th:text="'Position :  ' + ${form.position}" />
+    Gauche <input type="checkbox" th:checked="${form.cote} == 'left'" disabled/> Droite <input type="checkbox" th:checked="${form.cote} == 'right'" disabled/>
+</fieldset>
+<fieldset>
+    <legend>Personne à contacter en cas d'urgence</legend>
+    <p th:text="'Nom :  ' + ${form.last_name_other}"/>
+    <p th:text="'Prénom : ' + ${form.first_name_other}" />
+    <p th:text="'Tél. : ' + ${form.phone_other}" />
+</fieldset>
+
+<p>J'ai pris connaissance du règlement, et je m'engage à le respecter.</p>
 
 <a th:href="${'pdf/' + form.fileName}" target="_blank" >Telecharger</a>
 <br/>
